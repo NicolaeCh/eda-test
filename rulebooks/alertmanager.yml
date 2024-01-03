@@ -31,6 +31,13 @@
         run_job_template:
           name: Demo Job Template
           organization: Default
+        
+    - name: cpu mas 5
+      condition: event.alert.labels.alertname == "CPU_mas_5"" and event.alert.status == "firing"
+      action:
+        run_job_template:
+          name: Demo Job Template
+          organization: Default
 
     - name: Capture all other events from this source
       condition: event.alert is defined
