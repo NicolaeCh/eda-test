@@ -25,6 +25,13 @@
         debug:
           msg: "enabled on: {{ event.meta.hosts }}"
 
+    - name: Prueba exporter
+      condition: event.alert.labels.alertname == "Exporter_disabled" and event.alert.status == "firing"
+      action:
+        run_job_template:
+          name: Demo Job Template
+          organization: Default
+
     - name: Capture all other events from this source
       condition: event.alert is defined
       action:
